@@ -1,0 +1,21 @@
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<h2>Inventory List</h2>
+<a href="/crudapp/inventory/additem"><button>Add Item</button></a><br>
+{% if inventory_list %}
+    <ul style="list-style: none; display: inline-block;">
+    {% for item in inventory_list %}
+        <li style="display: inline-block; background-color:aliceblue; margin: 10px; padding: 10px; ">
+            <div>
+                <h4 style="margin:0px;"> 
+                    <a href="/crudapp/inventory/{{ item.id }}/edititem">{{ item.brand_name }} {{ item.item_name }}</a> 
+                    <a href="/crudapp/inventory/{{ item.id }}/delete"><i class="fa fa-trash" style="color:red"></i></a>
+                </h4>
+                Avilable Qty <b> {{ item.item_available_qty }} </b> 
+                <div> <i style="font-size:12px">{{ item.last_updated }} </i> </div>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No stock!!</p>
+{% endif %}

@@ -1,0 +1,24 @@
+<h1>Stock Item</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'crudapp:createitem' item.id %}" method="post">
+{% csrf_token %}
+    <fieldset style="border:none">
+        <label for="itemId">Item Id </label>
+        <input type="number" name="itemId" value="{{ item.item_id }}"/>
+    </fieldset>
+    <fieldset style="border:none">
+        <label for="brandName"> Brand Name </label>
+        <input type="text" name="brandName" value="{{ item.brand_name }} "/>
+    </fieldset>
+    <fieldset style="border:none">
+        <label for="itemName">Item Name</label>
+        <input type="text" name="itemName" value="{{ item.item_name }}"/>
+    </fieldset>
+    <fieldset style="border:none">
+        <label for="availableQty">Available Qty</label>
+        <input type="number" name="availableQty" value="{{ item.item_available_qty }}"/>
+    </fieldset>
+    <input type="submit" value="Add Item" />
+</form>
